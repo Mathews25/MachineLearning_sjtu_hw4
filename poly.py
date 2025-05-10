@@ -5,9 +5,9 @@ from sklearn.metrics import accuracy_score
 
 X_train_hog, y_train, X_test_hog, y_test = mf.load_data()
 param_grid = {
-    'C': [0.1, 1, 10, 100, 1000],
-    'gamma': [0.001, 0.01, 0.1, 1, 10, 'scale', 'auto'],
-    'degree' : [2, 3, 4, 5],
+    'C': [0.1, 1, 10, 100],
+    'gamma': [0.001, 0.01, 0.1, 1, 10, 'scale'],
+    'degree' : [3, 4],
 }
 
 grid_search = GridSearchCV(SVC(kernel='poly'), param_grid, cv=5)
