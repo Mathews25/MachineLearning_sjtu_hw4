@@ -31,12 +31,13 @@ print(f"正类支持向量数: {n_support[1]}")  # 假设正类标签为1
 print(f"负类支持向量数: {n_support[0]}")  # 假设负类标签为0
 
 X_train = np.load('X_train_sampled.npy')
+n_rows = len(support_indices) // 5 + 1
 
-plt.figure(figsize=(15, 10))
+plt.figure(figsize=(15, n_rows * 4))
 for i, idx in enumerate(support_indices):
-    plt.subplot(n_support // 5 + 1, 5, i + 1)  # 每行显示5个图像
+    plt.subplot(n_rows, 5, i + 1)  # 每行显示5个图像
     plt.imshow(X_train[idx].reshape(28, 28), cmap='gray')
-    plt.title(f"class: {y_train[idx]}\n weights: s{abs(dual_coef[0][i]):.4f}")
+    plt.title(f"class: {y_train[idx]}\n weights: {abs(dual_coef[0][i]):.4f}")
     plt.axis('off')
 plt.tight_layout()
 plt.savefig('support_vectors.png')
